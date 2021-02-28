@@ -52,6 +52,7 @@
             this.regControl.Name = "regControl";
             this.regControl.Size = new System.Drawing.Size(174, 158);
             this.regControl.TabIndex = 0;
+            this.regControl.Load += new System.EventHandler(this.regControl_Load);
             // 
             // grbx_signin
             // 

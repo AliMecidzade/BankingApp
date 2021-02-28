@@ -10,7 +10,7 @@ namespace BankingAppU.Models
    public class Log : Entity
     {
         public string Message { get; set; }
-        public int Date { get; set; }
+        public DateTime Date { get; set; }
         public string userEmail { get; set;  }
         public LogStatus LogStatus { get; set; }
     }

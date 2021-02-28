@@ -45,8 +45,8 @@ namespace BankingAppU.Forms
         {
             txbx_name.Text = user.Name;
             txbx_surname.Text = user.Surname;
-            credentialsControl.Text = txbx_email.Text = user.Email;
-            credentialsControl.Text = txbx_password.Text = user.Password;
+            credentialsControl.txbx_email.Text = user.Email;
+            credentialsControl.txbx_password.Text = user.Password;
         }
     }
 }

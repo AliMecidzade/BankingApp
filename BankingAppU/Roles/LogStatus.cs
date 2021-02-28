@@ -8,7 +8,7 @@ namespace BankingAppU.Roles
 {
     public enum LogStatus
     {
-        In,
-        Out
+        LogIn,
+        LogOut
     }
 }

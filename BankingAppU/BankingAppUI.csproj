@@ -55,6 +55,8 @@
     <Compile Include="Core\Session.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbSet.cs" />
+    <Compile Include="Exceptions\InvalidEmailExceptions.cs" />
+    <Compile Include="Exceptions\InvalidPasswordException.cs" />
     <Compile Include="Forms\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,8 +146,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
