@@ -19,8 +19,16 @@ namespace BankingAppU
         public UserDashboard()
         {
             InitializeComponent();
-            _user = Session.User != null ? Session.User : null;  MessageBox.Show("404 Not Found!");
-            Close();
+            if (Session.User != null)
+            {
+                _user = Session.User;
+            }
+            else
+            {
+                MessageBox.Show("404 Not Found!");
+                Close();
+            }
+          
         }
 
         private void UserDashboard_Load(object sender, EventArgs e)

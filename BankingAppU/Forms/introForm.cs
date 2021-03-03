@@ -60,12 +60,13 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-
+            MessageBox.Show("You successfully registered!");
             if (Dbcontext.Users.Any(u => u.Email == email && u.Password == password))
             {
                 var currentUser = Dbcontext.Users.Get(u => u.Email == email && u.Password == password);
                 Session.User = currentUser;
                 Session.IntroForm =  Session.IntroForm ?? this;
+               
                 //new form opens
                 Hide();
                 new UserDashboard().ShowDialog();
@@ -107,7 +108,7 @@ namespace BankingAppU
            if (Dbcontext.Users.Any(u => u.Email == email))
            {
                 MessageBox.Show("User already exists");
-            }
+           }
             else
             {
                 User user = new User
@@ -117,6 +118,8 @@ namespace BankingAppU
                     Password = password,
                     UserRole = Roles.UserRole.User
                 };
+                Dbcontext.Users.Add(user);
+               
             }
 
         }

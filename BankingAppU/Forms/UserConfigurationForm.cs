@@ -19,8 +19,16 @@ namespace BankingAppU.Forms
         public UserConfigurationForm()
         {
             InitializeComponent();
-            _user = Session.User != null ? Session.User : null; MessageBox.Show("404 Not Found!");
-            Close();
+            if (Session.User != null)
+            {
+                _user = Session.User;
+            }
+            else
+            {
+                MessageBox.Show("404 not found");
+                Close();
+            }
+           
             //credentials Control
             credentialsControl.btn_sign.Text = "Update Info";
             credentialsControl.btn_sign.Click += Btn_updateUser_Click;
@@ -34,7 +42,7 @@ namespace BankingAppU.Forms
 
         private void UserConfigurationForm_Load(object sender, EventArgs e)
         {
-
+            ShowUserInfo(_user);
         }
 
         private void label1_Click(object sender, EventArgs e)
