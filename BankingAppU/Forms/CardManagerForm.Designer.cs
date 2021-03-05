@@ -30,6 +30,10 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grbx_card = new System.Windows.Forms.GroupBox();
+            this.cmbx_type = new System.Windows.Forms.ComboBox();
+            this.cmbx_duration = new System.Windows.Forms.ComboBox();
+            this.cmbx_bank = new System.Windows.Forms.ComboBox();
+            this.btn_order = new System.Windows.Forms.Button();
             this.txbx_expiredDate = new System.Windows.Forms.TextBox();
             this.txbx_cvc = new System.Windows.Forms.TextBox();
             this.txbx_number = new System.Windows.Forms.TextBox();
@@ -39,10 +43,6 @@
             this.lbl_duration = new System.Windows.Forms.Label();
             this.lbl_bank = new System.Windows.Forms.Label();
             this.lbl_number = new System.Windows.Forms.Label();
-            this.btn_order = new System.Windows.Forms.Button();
-            this.cmbx_bank = new System.Windows.Forms.ComboBox();
-            this.cmbx_duration = new System.Windows.Forms.ComboBox();
-            this.cmbx_type = new System.Windows.Forms.ComboBox();
             this.grbx_card.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,55 @@
             this.grbx_card.TabIndex = 3;
             this.grbx_card.TabStop = false;
             this.grbx_card.Text = "Card";
+            // 
+            // cmbx_type
+            // 
+            this.cmbx_type.FormattingEnabled = true;
+            this.cmbx_type.Items.AddRange(new object[] {
+            "Salary",
+            "Debet",
+            "Scolarship",
+            "Credit"});
+            this.cmbx_type.Location = new System.Drawing.Point(81, 93);
+            this.cmbx_type.Name = "cmbx_type";
+            this.cmbx_type.Size = new System.Drawing.Size(174, 21);
+            this.cmbx_type.TabIndex = 16;
+            // 
+            // cmbx_duration
+            // 
+            this.cmbx_duration.FormattingEnabled = true;
+            this.cmbx_duration.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "5",
+            "10"});
+            this.cmbx_duration.Location = new System.Drawing.Point(80, 65);
+            this.cmbx_duration.Name = "cmbx_duration";
+            this.cmbx_duration.Size = new System.Drawing.Size(174, 21);
+            this.cmbx_duration.TabIndex = 15;
+            // 
+            // cmbx_bank
+            // 
+            this.cmbx_bank.FormattingEnabled = true;
+            this.cmbx_bank.Items.AddRange(new object[] {
+            "Kapital Bank",
+            "Express Bank",
+            "BTB Bank",
+            "Yellow Bank",
+            "Beynaxalq Bank"});
+            this.cmbx_bank.Location = new System.Drawing.Point(81, 35);
+            this.cmbx_bank.Name = "cmbx_bank";
+            this.cmbx_bank.Size = new System.Drawing.Size(174, 21);
+            this.cmbx_bank.TabIndex = 14;
+            // 
+            // btn_order
+            // 
+            this.btn_order.Location = new System.Drawing.Point(80, 246);
+            this.btn_order.Name = "btn_order";
+            this.btn_order.Size = new System.Drawing.Size(174, 38);
+            this.btn_order.TabIndex = 13;
+            this.btn_order.Text = "Order";
+            this.btn_order.UseVisualStyleBackColor = true;
             // 
             // txbx_expiredDate
             // 
@@ -145,55 +194,6 @@
             this.lbl_number.Size = new System.Drawing.Size(53, 13);
             this.lbl_number.TabIndex = 0;
             this.lbl_number.Text = "Number : ";
-            // 
-            // btn_order
-            // 
-            this.btn_order.Location = new System.Drawing.Point(80, 246);
-            this.btn_order.Name = "btn_order";
-            this.btn_order.Size = new System.Drawing.Size(174, 38);
-            this.btn_order.TabIndex = 13;
-            this.btn_order.Text = "Order";
-            this.btn_order.UseVisualStyleBackColor = true;
-            // 
-            // cmbx_bank
-            // 
-            this.cmbx_bank.FormattingEnabled = true;
-            this.cmbx_bank.Items.AddRange(new object[] {
-            "Kapital Bank",
-            "Express Bank",
-            "BTB Bank",
-            "Yellow Bank",
-            "Beynaxalq Bank"});
-            this.cmbx_bank.Location = new System.Drawing.Point(81, 35);
-            this.cmbx_bank.Name = "cmbx_bank";
-            this.cmbx_bank.Size = new System.Drawing.Size(174, 21);
-            this.cmbx_bank.TabIndex = 14;
-            // 
-            // cmbx_duration
-            // 
-            this.cmbx_duration.FormattingEnabled = true;
-            this.cmbx_duration.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "5",
-            "10"});
-            this.cmbx_duration.Location = new System.Drawing.Point(80, 65);
-            this.cmbx_duration.Name = "cmbx_duration";
-            this.cmbx_duration.Size = new System.Drawing.Size(174, 21);
-            this.cmbx_duration.TabIndex = 15;
-            // 
-            // cmbx_type
-            // 
-            this.cmbx_type.FormattingEnabled = true;
-            this.cmbx_type.Items.AddRange(new object[] {
-            "Salary",
-            "Debet",
-            "Scolarship",
-            "Credit"});
-            this.cmbx_type.Location = new System.Drawing.Point(81, 93);
-            this.cmbx_type.Name = "cmbx_type";
-            this.cmbx_type.Size = new System.Drawing.Size(174, 21);
-            this.cmbx_type.TabIndex = 16;
             // 
             // CardManagerForm
             // 

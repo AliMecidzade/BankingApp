@@ -171,6 +171,7 @@
             this.Controls.Add(this.grbx_user);
             this.Name = "UserDashboard";
             this.Text = "UserDashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserDashboard_FormClosed);
             this.Load += new System.EventHandler(this.UserDashboard_Load);
             this.grbx_user.ResumeLayout(false);
             this.grbx_user.PerformLayout();

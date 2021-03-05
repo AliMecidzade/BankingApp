@@ -20,5 +20,20 @@ namespace BankingAppU.Data
             Logs = new DbSet<Log>();
 
         }
+        private void AddDefaultUsers()
+        {
+            Users.Add(new User
+            {
+                Id = Identificator<User>.GenerateId().ToString(),
+                Name = "Admin",
+                Surname = "Adminov",
+                Email = "admin@",
+                Password = "123456",
+                UserRole = Roles.UserRole.Admin
+            }
+               ) ; 
+            }
+            
+        }
     }
-}
+

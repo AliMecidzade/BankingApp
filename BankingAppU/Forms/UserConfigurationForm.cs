@@ -1,5 +1,6 @@
 ﻿using BankingAppU.Components;
 using BankingAppU.Core;
+using BankingAppU.Data;
 using BankingAppU.Models;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,10 @@ namespace BankingAppU.Forms
     public partial class UserConfigurationForm : Form
     {
         private User _user;
+        private readonly DbContext _dbcontext;
         public UserConfigurationForm()
         {
+            _dbcontext = Session.DbContext;
             InitializeComponent();
             if (Session.User != null)
             {
@@ -37,7 +40,9 @@ namespace BankingAppU.Forms
 
         private void Btn_updateUser_Click(object sender, EventArgs e)
         {
-
+            UpdateUser(_user);
+            _dbcontext.Users.Update(_user);
+            MessageBox.Show("Success");
         }
 
         private void UserConfigurationForm_Load(object sender, EventArgs e)
@@ -55,6 +60,13 @@ namespace BankingAppU.Forms
             txbx_surname.Text = user.Surname;
             credentialsControl.txbx_email.Text = user.Email;
             credentialsControl.txbx_password.Text = user.Password;
+        }
+        private void UpdateUser(User user)
+        {
+            user.Name = txbx_name.Text;
+            user.Surname = txbx_surname.Text;
+            user.Password = credentialsControl.txbx_password.Text;
+            
         }
     }
 }

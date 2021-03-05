@@ -33,7 +33,6 @@
             this.link_users = new System.Windows.Forms.LinkLabel();
             this.link_cards = new System.Windows.Forms.LinkLabel();
             this.link_logOut = new System.Windows.Forms.LinkLabel();
-            this.link_refresh = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_data)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +48,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.link_refresh);
             this.groupBox1.Controls.Add(this.link_users);
             this.groupBox1.Controls.Add(this.link_cards);
             this.groupBox1.Controls.Add(this.link_logOut);
@@ -69,6 +67,7 @@
             this.link_users.TabIndex = 2;
             this.link_users.TabStop = true;
             this.link_users.Text = "Users";
+            this.link_users.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_users_LinkClicked);
             // 
             // link_cards
             // 
@@ -89,16 +88,7 @@
             this.link_logOut.TabIndex = 0;
             this.link_logOut.TabStop = true;
             this.link_logOut.Text = "LogOut";
-            // 
-            // link_refresh
-            // 
-            this.link_refresh.AutoSize = true;
-            this.link_refresh.Location = new System.Drawing.Point(662, 51);
-            this.link_refresh.Name = "link_refresh";
-            this.link_refresh.Size = new System.Drawing.Size(44, 13);
-            this.link_refresh.TabIndex = 3;
-            this.link_refresh.TabStop = true;
-            this.link_refresh.Text = "Refresh";
+            this.link_logOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_logOut_LinkClicked);
             // 
             // AdminPanel
             // 
@@ -124,6 +114,5 @@
         private System.Windows.Forms.LinkLabel link_users;
         private System.Windows.Forms.LinkLabel link_cards;
         private System.Windows.Forms.LinkLabel link_logOut;
-        private System.Windows.Forms.LinkLabel link_refresh;
     }
 }

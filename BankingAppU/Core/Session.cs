@@ -1,4 +1,5 @@
 ﻿using BankingAppU.Data;
+using BankingAppU.Forms;
 using BankingAppU.Models;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace BankingAppU.Core
         public static introForm IntroForm { get;  set; }
     
         public static UserDashboard UserDashBoard { get;  set; }
+        public static AdminPanel AdminPanel { get; internal set; }
     }
 }

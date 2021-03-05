@@ -1,6 +1,7 @@
 ﻿using BankingAppU.Core;
 using BankingAppU.Data;
 using BankingAppU.Exceptions;
+using BankingAppU.Forms;
 using BankingAppU.Models;
 using BankingAppU.Roles;
 using BankingAppU.Validation;
@@ -33,7 +34,8 @@ namespace BankingAppU
             logControl.txbx_password.UseSystemPasswordChar = true;
             regControl.txbx_password.UseSystemPasswordChar = true;
            _validator  = new Validator();
-
+            Dbcontext = new DbContext();
+            
         }
 
         private void Btn_signIn_Click(object sender, EventArgs e)
@@ -42,6 +44,7 @@ namespace BankingAppU
                   email = logControl.txbx_email.Text,
                   password = logControl .txbx_password.Text;
             //validation
+            
             try
             {
                 _validator.IsEmpty(email,password);
@@ -60,16 +63,32 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-            MessageBox.Show("You successfully registered!");
+            finally
+            {
+                MessageBox.Show("You successfully logged in!");
+            }
+           
+
+            
             if (Dbcontext.Users.Any(u => u.Email == email && u.Password == password))
             {
-                var currentUser = Dbcontext.Users.Get(u => u.Email == email && u.Password == password);
+               var currentUser = Dbcontext.Users.Get(u => u.Email == email && u.Password == password);
                 Session.User = currentUser;
+                Session.DbContext = Dbcontext;
                 Session.IntroForm =  Session.IntroForm ?? this;
+               
                
                 //new form opens
                 Hide();
-                new UserDashboard().ShowDialog();
+                if(currentUser.UserRole == Roles.UserRole.User)
+                {
+                     new UserDashboard().ShowDialog();
+                }
+                else if(currentUser.UserRole == Roles.UserRole.Admin)
+                {
+                    new AdminPanel().ShowDialog();
+                }
+                
 
             }
             else
@@ -104,7 +123,7 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-            Dbcontext = new DbContext();
+            
            if (Dbcontext.Users.Any(u => u.Email == email))
            {
                 MessageBox.Show("User already exists");
@@ -119,7 +138,8 @@ namespace BankingAppU
                     UserRole = Roles.UserRole.User
                 };
                 Dbcontext.Users.Add(user);
-               
+                MessageBox.Show("You successfully registered");
+
             }
 
         }

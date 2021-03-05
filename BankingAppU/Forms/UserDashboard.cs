@@ -39,9 +39,9 @@ namespace BankingAppU
         }
         private void ShowUserInfo(User user)
         {
-            lbl_name.Text = user.Name;
-            lbl_surname.Text = user.Surname;
-            lbl_email.Text = user.Email;
+            lbl_name.Text = $"Name : {user.Name}";
+            lbl_surname.Text = $"Surname : {user.Surname}";
+            lbl_email.Text = $"Email : {user.Email}"; 
         }
 
         private void link_settings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -70,6 +70,11 @@ namespace BankingAppU
         private void link_myCards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new CardDataForm().ShowDialog();
+        }
+
+        private void UserDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Session.IntroForm.Close();
         }
     }
 }
