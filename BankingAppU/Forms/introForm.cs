@@ -63,10 +63,7 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-            finally
-            {
-                MessageBox.Show("You successfully logged in!");
-            }
+           
            
 
             
@@ -96,7 +93,7 @@ namespace BankingAppU
                 MessageBox.Show("This user does not exists");
             }
 
-
+           
         }
 
         private void Btn_signUp_Click(object sender, EventArgs e)
@@ -130,13 +127,15 @@ namespace BankingAppU
            }
             else
             {
+               
                 User user = new User
                 {
-                 Id = Identificator<User>.GenerateId().ToString(),
+                 Id = Identificator<User>.GenerateId(),
                     Email = email,
                     Password = password,
                     UserRole = Roles.UserRole.User
                 };
+                
                 Dbcontext.Users.Add(user);
                 MessageBox.Show("You successfully registered");
 

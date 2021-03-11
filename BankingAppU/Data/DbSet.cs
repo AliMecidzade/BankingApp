@@ -66,7 +66,8 @@ namespace BankingAppU.Data
                 }
             }
              }
-
+      
+        
         public T Get(Func<T, bool> predicate)
         {
 

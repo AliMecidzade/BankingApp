@@ -69,6 +69,7 @@
     <Compile Include="Forms\CardDataForm.Designer.cs">
       <DependentUpon>CardDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business Logics\CardManager.cs" />
     <Compile Include="Forms\CardManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,9 @@
     <Compile Include="Forms\UserConfigurationForm.Designer.cs">
       <DependentUpon>UserConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Roles\CardType.cs" />
+    <Compile Include="Roles\CardDuration.cs" />
+    <Compile Include="Roles\BankName.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Log.cs" />

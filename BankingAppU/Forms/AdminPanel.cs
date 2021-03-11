@@ -36,9 +36,14 @@ namespace BankingAppU.Forms
         {
             Hide();
             Session.AdminPanel = Session.AdminPanel ?? this;
-            Session.IntroForm.ShowDialog();
+            Session.IntroForm.Show();
         }
 
-      
+        private void link_cards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            dgv_data.DataSource = _dbContext.Cards.GetAll().
+                Select(c => new { c.Id, c.Number, c.Balance, c.CVC, c.Bank, c.CardType, c.CardHolder, c.ExpireDate }).
+                  ToList();
+        }
     }
 }

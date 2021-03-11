@@ -78,6 +78,7 @@
             this.link_cards.TabIndex = 1;
             this.link_cards.TabStop = true;
             this.link_cards.Text = "Cards";
+            this.link_cards.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_cards_LinkClicked);
             // 
             // link_logOut
             // 

@@ -36,7 +36,7 @@
             this.btn_order = new System.Windows.Forms.Button();
             this.txbx_expiredDate = new System.Windows.Forms.TextBox();
             this.txbx_cvc = new System.Windows.Forms.TextBox();
-            this.txbx_number = new System.Windows.Forms.TextBox();
+            this.txbx_cardNumber = new System.Windows.Forms.TextBox();
             this.lbl_expiredDate = new System.Windows.Forms.Label();
             this.lbl_cvc = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.grbx_card.Controls.Add(this.btn_order);
             this.grbx_card.Controls.Add(this.txbx_expiredDate);
             this.grbx_card.Controls.Add(this.txbx_cvc);
-            this.grbx_card.Controls.Add(this.txbx_number);
+            this.grbx_card.Controls.Add(this.txbx_cardNumber);
             this.grbx_card.Controls.Add(this.lbl_expiredDate);
             this.grbx_card.Controls.Add(this.lbl_cvc);
             this.grbx_card.Controls.Add(this.label4);
@@ -98,11 +98,11 @@
             // 
             this.cmbx_bank.FormattingEnabled = true;
             this.cmbx_bank.Items.AddRange(new object[] {
-            "Kapital Bank",
-            "Express Bank",
-            "BTB Bank",
-            "Yellow Bank",
-            "Beynaxalq Bank"});
+            "KapitalBank",
+            "ExpressBank",
+            "BTB_Bank",
+            "YellowBank",
+            "BeynaxalqBank"});
             this.cmbx_bank.Location = new System.Drawing.Point(81, 35);
             this.cmbx_bank.Name = "cmbx_bank";
             this.cmbx_bank.Size = new System.Drawing.Size(174, 21);
@@ -116,6 +116,7 @@
             this.btn_order.TabIndex = 13;
             this.btn_order.Text = "Order";
             this.btn_order.UseVisualStyleBackColor = true;
+            this.btn_order.Click += new System.EventHandler(this.btn_order_Click);
             // 
             // txbx_expiredDate
             // 
@@ -133,13 +134,13 @@
             this.txbx_cvc.Size = new System.Drawing.Size(175, 20);
             this.txbx_cvc.TabIndex = 11;
             // 
-            // txbx_number
+            // txbx_cardNumber
             // 
-            this.txbx_number.Enabled = false;
-            this.txbx_number.Location = new System.Drawing.Point(81, 127);
-            this.txbx_number.Name = "txbx_number";
-            this.txbx_number.Size = new System.Drawing.Size(174, 20);
-            this.txbx_number.TabIndex = 10;
+            this.txbx_cardNumber.Enabled = false;
+            this.txbx_cardNumber.Location = new System.Drawing.Point(81, 127);
+            this.txbx_cardNumber.Name = "txbx_cardNumber";
+            this.txbx_cardNumber.Size = new System.Drawing.Size(174, 20);
+            this.txbx_cardNumber.TabIndex = 10;
             // 
             // lbl_expiredDate
             // 
@@ -219,7 +220,7 @@
         private System.Windows.Forms.Button btn_order;
         private System.Windows.Forms.TextBox txbx_expiredDate;
         private System.Windows.Forms.TextBox txbx_cvc;
-        private System.Windows.Forms.TextBox txbx_number;
+        private System.Windows.Forms.TextBox txbx_cardNumber;
         private System.Windows.Forms.Label lbl_expiredDate;
         private System.Windows.Forms.Label lbl_cvc;
         private System.Windows.Forms.Label label4;
