@@ -20,7 +20,7 @@ namespace BankingAppU
 
     public partial class introForm : Form
     {
-        private DbContext Dbcontext { get; set; }
+        private DatabaseManager _databaseManager;
         Validator _validator;
         public introForm()
         {
@@ -34,7 +34,7 @@ namespace BankingAppU
             logControl.txbx_password.UseSystemPasswordChar = true;
             regControl.txbx_password.UseSystemPasswordChar = true;
            _validator  = new Validator();
-            Dbcontext = new DbContext();
+           
             
         }
 
@@ -63,15 +63,23 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-           
-           
 
-            
-            if (Dbcontext.Users.Any(u => u.Email == email && u.Password == password))
+
+
+            //read data
+            List<User> users = null;
+            using (_databaseManager = new DatabaseManager("myDb"))
             {
-               var currentUser = Dbcontext.Users.Get(u => u.Email == email && u.Password == password);
+                users = _databaseManager.GetAllUsers().ToList();
+            }
+            if (users.Any(u => u.Email == email && u.Password == password))
+            {
+
+                // read data
+             
+                User currentUser = users.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
                 Session.User = currentUser;
-                Session.DbContext = Dbcontext;
+                
                 Session.IntroForm =  Session.IntroForm ?? this;
                
                
@@ -86,7 +94,7 @@ namespace BankingAppU
                     new AdminPanel().ShowDialog();
                 }
                 
-
+                
             }
             else
             {
@@ -120,8 +128,13 @@ namespace BankingAppU
             {
                 MessageBox.Show("Your password is too short!");
             }
-            
-           if (Dbcontext.Users.Any(u => u.Email == email))
+            List<User> users = null;
+            using (_databaseManager = new DatabaseManager("myDb"))
+            {
+                 users =  _databaseManager.GetAllUsers().ToList();
+            }
+            // read data
+            if (users.Any(u => u.Email == email))
            {
                 MessageBox.Show("User already exists");
            }
@@ -130,13 +143,17 @@ namespace BankingAppU
                
                 User user = new User
                 {
-                 Id = Identificator<User>.GenerateId(),
+                
                     Email = email,
                     Password = password,
                     UserRole = Roles.UserRole.User
                 };
-                
-                Dbcontext.Users.Add(user);
+
+                // insert data
+                using(_databaseManager = new DatabaseManager("myDb"))
+                {
+                    _databaseManager.Adduser(user);
+                }
                 MessageBox.Show("You successfully registered");
 
             }

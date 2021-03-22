@@ -16,12 +16,12 @@ namespace BankingAppU.Forms
     public partial class CardManagerForm : Form
     {
         private readonly User _currentUser;
-        private readonly DbContext _dbContext;
+        private DatabaseManager _db
         public CardManagerForm()
         {
             InitializeComponent();
             _currentUser = Session.User;
-            _dbContext = Session.DbContext;
+            _dbContext = ;
         }
 
         private void CardManagerForm_Load(object sender, EventArgs e)
@@ -38,9 +38,10 @@ namespace BankingAppU.Forms
               bank = cmbx_bank.Text,
               duration = cmbx_duration.Text,
               type = cmbx_type.Text;
-
+            // create data
             CardManager cardManager = new CardManager(bank, _currentUser);
             Card generatedCard = cardManager.GenerateCard(duration, type);
+            generatedCard.User = _currentUser;
             ShowCardInfo(generatedCard);
             _currentUser.Cards.Append(generatedCard);
             _dbContext.Cards.Add(generatedCard);

@@ -1,9 +1,13 @@
 ﻿using BankingAppU.Core;
 using BankingAppU.Data;
+using BankingAppU.Models;
+using BankingAppU.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,8 +32,16 @@ namespace BankingAppU.Forms
 
         private void link_users_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dgv_data.DataSource = _dbContext.Users.GetAll().Where(u => u.UserRole == Roles.UserRole.User).
-                Select(u => new { u.Id, FullName = $"{u.Name } {u.Surname}", u.Email }).ToList();
+            // read data
+         
+            using(DatabaseManager databaseManager = new DatabaseManager("myDb"))
+            {
+               
+                dgv_data.DataSource = databaseManager.GetAllUsers().Where(u => u.UserRole == UserRole.User).
+              Select(u => new { u.Id, FullName = $"{u.Name } {u.Surname}", u.Email }).ToList();
+            }
+           
+
         }
 
         private void link_logOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,9 +53,10 @@ namespace BankingAppU.Forms
 
         private void link_cards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dgv_data.DataSource = _dbContext.Cards.GetAll().
-                Select(c => new { c.Id, c.Number, c.Balance, c.CVC, c.Bank, c.CardType, c.CardHolder, c.ExpireDate }).
-                  ToList();
+            // read data
+           // dgv_data.DataSource = _dbContext.Cards.GetAll().
+            //    Select(c => new { c.Id, c.Number, c.Balance, c.CVC, c.Bank, c.CardType, c.CardHolder, c.ExpireDate }).
+               //   ToList();
         }
     }
 }

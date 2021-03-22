@@ -22,7 +22,7 @@ namespace BankingAppU.Forms
         {
             return new Card
             {
-                Id = Identificator<Card>.GenerateId(),
+               
                 Bank = (BankName)Enum.Parse(typeof(BankName), _bank),
                 Duration = (CardDuration)Enum.Parse(typeof(CardDuration), duration),
                 CardType = (CardType)Enum.Parse(typeof(CardType), type),

@@ -16,20 +16,23 @@ namespace BankingAppU.Forms
     public partial class CardDataForm : Form
     {
         private readonly User _currentUser;
-        public readonly DbContext _dbContext;
+        public  DatabaseManager _db;
         public CardDataForm()
         {
             InitializeComponent();
-            _dbContext = Session.DbContext;
+            
             _currentUser = Session.User;
         }
 
         private void CardDataForm_Load(object sender, EventArgs e)
         {
-
-            dgv_cards.DataSource = _dbContext.Cards.GetAll(card => card.User.Id == _currentUser.Id).
-                Select(c => new { c.Id, c.Number,c.Balance, c.CVC,  c.Bank, c.CardType, c.CardHolder, c.ExpireDate }).
+            // read data
+            using (_db = new DatabaseManager("myDb"))
+            {
+                dgv_cards.DataSource = _db.GetCardsByUserId(_currentUser.Id).
+                Select(c => new { c.Id, c.Number, c.Balance, c.CVC, c.Bank, c.CardType, c.CardHolder, c.ExpireDate }).
                   ToList();
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,19 +42,25 @@ namespace BankingAppU.Forms
 
         private void dgv_cards_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // read data
             if (int.TryParse((dgv_cards[e.ColumnIndex, e.RowIndex].Value).ToString(), out int idValue))
             {
-                if (_dbContext.Cards.GetAll().Any(x => x.Id == idValue))
-                {
-                    ShowCardInfo(idValue);
+                using (_db = new DatabaseManager("myDb")) {
+
+                    Card card = _db.GetCardById(idValue);
+                    if (card != null)
+                    {
+                        ShowCardInfo(card);
+                    }
+
                 }
+              
             }
         }
 
-        private void ShowCardInfo(int value)
+        private void ShowCardInfo(Card card)
         {
-            Card card = _dbContext.Cards.Get(c => c.Id == value);
+           
             txbx_bank.Text = card.Bank.ToString();
             txbx_number.Text = card.Number;
             txbx_type.Text = card.CardType.ToString();

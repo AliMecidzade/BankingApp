@@ -11,7 +11,7 @@ namespace BankingAppU.Core
 {
    public static class Session
     { 
-        public static DbContext DbContext { get; set; }
+       
         public static User User { get; set; }
         public static introForm IntroForm { get;  set; }
     

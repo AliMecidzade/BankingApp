@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,7 @@
       <DependentUpon>SignControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Session.cs" />
+    <Compile Include="Data\DatabaseManager.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbSet.cs" />
     <Compile Include="Exceptions\InvalidEmailExceptions.cs" />
@@ -76,7 +78,6 @@
     <Compile Include="Forms\CardManagerForm.Designer.cs">
       <DependentUpon>CardManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\Identificator.cs" />
     <Compile Include="Forms\introForm.cs">
       <SubType>Form</SubType>
     </Compile>

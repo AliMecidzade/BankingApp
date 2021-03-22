@@ -17,7 +17,7 @@ namespace BankingAppU.Forms
     public partial class UserConfigurationForm : Form
     {
         private User _user;
-        private readonly DbContext _dbcontext;
+        private DatabaseManager _db;
         public UserConfigurationForm()
         {
             _dbcontext = Session.DbContext;
@@ -41,7 +41,9 @@ namespace BankingAppU.Forms
         private void Btn_updateUser_Click(object sender, EventArgs e)
         {
             UpdateUser(_user);
-            _dbcontext.Users.Update(_user);
+
+            // update data
+           
             MessageBox.Show("Success");
         }
 
